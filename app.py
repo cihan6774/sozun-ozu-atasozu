@@ -118,7 +118,7 @@ elif menu == "🎮 Atasözünü Tamamla":
 
 # ---------------- HİKÂYE ----------------
 elif menu == "✍️ Hikâye Yaz":
-       st.subheader("✍️ Atasözü ile Hikâye Yazma")
+    st.subheader("✍️ Atasözü ile Hikâye Yazma")
 
     secilen = st.selectbox(
         "Bir atasözü seç:",
@@ -136,6 +136,7 @@ elif menu == "✍️ Hikâye Yaz":
         else:
             sheet.append_row([secilen, hikaye])
             st.success("Hikâye başarıyla kaydedildi! ✨")
+            
 # ---------------- QR Kod ----------------
 
 elif menu == "📱 QR Kod":
