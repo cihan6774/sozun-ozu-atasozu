@@ -5,14 +5,23 @@ st.set_page_config(page_title="Sözün Özü, Atasözü", layout="centered")
 
 st.title("📘 Sözün Özü, Atasözü")
 
-# Oturum değişkenleri
+# ---------------- OTURUM DEĞİŞKENLERİ ----------------
 if "puan" not in st.session_state:
     st.session_state.puan = 0
 
 if "soru_no" not in st.session_state:
     st.session_state.soru_no = 0
 
-# Atasözü sözlüğü
+if "cevaplandi" not in st.session_state:
+    st.session_state.cevaplandi = False
+
+if "sonuc_mesaji" not in st.session_state:
+    st.session_state.sonuc_mesaji = ""
+
+if "sonuc_tipi" not in st.session_state:
+    st.session_state.sonuc_tipi = ""
+
+# ---------------- VERİLER ----------------
 atasozu_sozlugu = {
     "Ağaç yaşken eğilir": "İnsan küçük yaşta eğitilmelidir.",
     "Damlaya damlaya göl olur": "Küçük birikimler zamanla büyür.",
@@ -21,7 +30,6 @@ atasozu_sozlugu = {
     "Ne ekersen onu biçersin": "Yapılan davranışların sonucu yaşanır."
 }
 
-# Oyun soruları
 oyun_sorulari = [
     {
         "soru": "Ağaç yaşken ...",
@@ -50,13 +58,35 @@ oyun_sorulari = [
     }
 ]
 
-# Menü
+# ---------------- YARDIMCI FONKSİYONLAR ----------------
+def sonraki_soru():
+    if st.session_state.soru_no < len(oyun_sorulari) - 1:
+        st.session_state.soru_no += 1
+        st.session_state.cevaplandi = False
+        st.session_state.sonuc_mesaji = ""
+        st.session_state.sonuc_tipi = ""
+
+def onceki_soru():
+    if st.session_state.soru_no > 0:
+        st.session_state.soru_no -= 1
+        st.session_state.cevaplandi = False
+        st.session_state.sonuc_mesaji = ""
+        st.session_state.sonuc_tipi = ""
+
+def oyunu_sifirla():
+    st.session_state.puan = 0
+    st.session_state.soru_no = 0
+    st.session_state.cevaplandi = False
+    st.session_state.sonuc_mesaji = ""
+    st.session_state.sonuc_tipi = ""
+
+# ---------------- MENÜ ----------------
 menu = st.radio(
     "Menüden bir bölüm seç:",
     ("📖 Atasözü Sözlüğü", "🎮 Atasözünü Tamamla", "✍️ Hikâye Yaz", "ℹ️ Proje Hakkında")
 )
 
-# Sözlük bölümü
+# ---------------- SÖZLÜK ----------------
 if menu == "📖 Atasözü Sözlüğü":
     st.subheader("📖 Atasözü Sözlüğü")
     for soz, anlam in atasozu_sozlugu.items():
@@ -64,7 +94,7 @@ if menu == "📖 Atasözü Sözlüğü":
         st.write(anlam)
         st.write("---")
 
-# Oyun bölümü
+# ---------------- OYUN ----------------
 elif menu == "🎮 Atasözünü Tamamla":
     st.subheader("🎮 Atasözünü Tamamla (Çoktan Seçmeli)")
 
@@ -75,37 +105,48 @@ elif menu == "🎮 Atasözünü Tamamla":
     secim = st.radio(
         "Doğru cevabı seç:",
         soru["secenekler"],
-        key=f"soru_{st.session_state.soru_no}"
+        key=f"secim_{st.session_state.soru_no}"
     )
 
     col1, col2, col3 = st.columns(3)
 
     with col1:
         if st.button("Cevabı Kontrol Et"):
-            if secim == soru["dogru"]:
-                st.success("Doğru ✔")
-                st.session_state.puan += 1
+            if not st.session_state.cevaplandi:
+                if secim == soru["dogru"]:
+                    st.session_state.puan += 1
+                    st.session_state.sonuc_mesaji = "Doğru ✔"
+                    st.session_state.sonuc_tipi = "success"
+                else:
+                    st.session_state.sonuc_mesaji = f"Yanlış ❌ Doğru cevap: {soru['dogru']}"
+                    st.session_state.sonuc_tipi = "error"
+
+                st.session_state.cevaplandi = True
             else:
-                st.error(f"Yanlış ❌ Doğru cevap: {soru['dogru']}")
+                st.session_state.sonuc_mesaji = "Bu soru zaten değerlendirildi. Sonraki soruya geçebilirsin."
+                st.session_state.sonuc_tipi = "info"
 
     with col2:
-        if st.button("⬅️ Önceki"):
-            if st.session_state.soru_no > 0:
-                st.session_state.soru_no -= 1
+        st.button("⬅️ Önceki", on_click=onceki_soru)
 
     with col3:
-        if st.button("Sonraki ➡️"):
-            if st.session_state.soru_no < len(oyun_sorulari) - 1:
-                st.session_state.soru_no += 1
+        st.button("Sonraki ➡️", on_click=sonraki_soru)
+
+    if st.session_state.sonuc_mesaji:
+        if st.session_state.sonuc_tipi == "success":
+            st.success(st.session_state.sonuc_mesaji)
+        elif st.session_state.sonuc_tipi == "error":
+            st.error(st.session_state.sonuc_mesaji)
+        else:
+            st.info(st.session_state.sonuc_mesaji)
 
     st.markdown(f"### 🧮 Puanın: **{st.session_state.puan}**")
 
     if st.button("🔄 Oyunu Sıfırla"):
-        st.session_state.puan = 0
-        st.session_state.soru_no = 0
+        oyunu_sifirla()
         st.rerun()
 
-# Hikâye yazma bölümü
+# ---------------- HİKÂYE ----------------
 elif menu == "✍️ Hikâye Yaz":
     st.subheader("✍️ Atasözü ile Hikâye Yazma")
 
@@ -128,7 +169,7 @@ elif menu == "✍️ Hikâye Yaz":
             st.write(f"**Seçilen atasözü:** {secilen}")
             st.write(hikaye)
 
-# Proje hakkında bölümü
+# ---------------- PROJE HAKKINDA ----------------
 elif menu == "ℹ️ Proje Hakkında":
     st.subheader("ℹ️ Proje Hakkında")
     st.write("""
