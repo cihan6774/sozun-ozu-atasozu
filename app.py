@@ -1,18 +1,9 @@
+import qrcode
+from io import BytesIO
+
+
 import streamlit as st
 import random
-import gspread
-from google.oauth2.service_account import Credentials
-
-scope = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive",
-]
-
-creds_dict = dict(st.secrets["gcp_service_account"])
-creds = Credentials.from_service_account_info(creds_dict, scopes=scope)
-client = gspread.authorize(creds)
-
-sheet = client.open("atasozu_veriler").sheet1
 
 atasozleri = {
     "Ağaç yaşken eğilir": "İnsan küçük yaşta eğitilmelidir.",
@@ -134,9 +125,8 @@ elif menu == "✍️ Hikâye Yaz":
         if hikaye.strip() == "":
             st.warning("Lütfen bir hikâye yaz.")
         else:
-            sheet.append_row([secilen, hikaye])
             st.success("Hikâye başarıyla kaydedildi! ✨")
-            
+
 # ---------------- QR Kod ----------------
 
 elif menu == "📱 QR Kod":
