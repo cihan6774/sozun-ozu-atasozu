@@ -27,6 +27,26 @@ atasozu_sozlugu = {
     "Damlaya damlaya göl olur": "Küçük birikimler zamanla büyür.",
     "Sakla samanı, gelir zamanı": "Gereksiz görülen şeyler ileride işe yarar.",
     "İşleyen demir ışıldar": "Çalışan insan körelmez.",
+    "Balık baştan kokar": "Bir topluluktaki bozulma, önce yöneticilerden veya üst mevkidekilerden başlar.",
+    "Tatlı dil yılanı deliğinden çıkarır": "ert ve kırıcı olmayan, nazik ve yumuşak konuşmalar en inatçı kişileri bile ikna edebilir.",
+    "Aba altında er yatar": "Kişilerin dış görünüşüne bakarak onların değerini veya yeteneğini küçümsememek gerekir..",
+    "Ateş düştüğü yeri yakar": "Bir felaketin acısını gerçek anlamda sadece o felakete uğrayanlar hisseder.",
+    "Dereyi görmeden paçaları sıvama": "Bir işin sonucunu kesin olarak görmeden hazırlıklara girişmek yanlıştır.",
+    "Gülü seven dikenine katlanır": "Sevdiği bir işi veya kişiyi seçen, onun getireceği zorluklara da razı olmalıdır.",
+    "Keskin sirke küpüne zarar": "Öfkeli ve asabi kimseler, bu tavırlarıyla en çok kendilerine zarar verirler.",
+    "Minareyi çalan kılıfını hazırlar": "Hukuka aykırı veya gizli bir iş yapan kişi, yakalanmamak için önceden her türlü önlemi alır.",
+    "Rüzgâr eken fırtına biçer": "Başkalarına kötülük yapanlar, yaptıklarının karşılığında çok daha büyük zararlar görürler..",
+    "Üzüm üzüme baka baka kararır": "Birbirine yakın olan insanlar, zamanla birbirlerinin huyunu ve alışkanlıklarını kaparlar..",
+    "Yalancının mumu yatsıya kadar yanar": "Söylenen yalanlar uzun süre gizli kalamaz, çok geçmeden ortaya çıkar..",
+    "Demir tavında dövülür": "Bir işten istenilen sonucun alınabilmesi için o işin en uygun zamanda yapılması gerekir..",
+    "Paça ıslanmadan balık tutulmaz": "Bir başarıya ulaşmak veya kazanç elde etmek için bazı zorlukları göze almak gerekir.",
+    "Besle kargayı oysun gözünü": "Kıymet bilmeyen birine yapılan iyilik, gün gelir size zarar olarak dönebilir.",
+    "Boş çuval dik durmaz": "Bilgisi veya yeteneği olmayan, içi boş bir insan toplumda tutunamaz..",
+    "Sütten ağzı yanan yoğurdu üfleyerek yer": "Bir olaydan büyük zarar gören kişi, benzer durumlarda aşırı tedbirli davranır.",
+    "Meyve veren ağacı taşlarlar": "Başarılı ve yetenekli kimselere karşı kıskançlık ve saldırılar eksik olmaz..",
+    "Denize düşen yılana sarılır": "Çok çaresiz bir duruma düşen kişi, kurtulmak için hiç güvenmediği şeylerden bile yardım umar..",
+    "Taş yerinde ağırdır": " İnsan, bulunduğu çevrede ve kendi makamında daha saygın ve etkili olur. .",
+    "Yavru kuş yuvada gördüğünü yapar": "Çocuklar, ailelerinden gördükleri davranışları örnek alarak büyürler.",
     "Ne ekersen onu biçersin": "Yapılan davranışların sonucu yaşanır."
 }
 
@@ -55,6 +75,106 @@ oyun_sorulari = [
         "soru": "Ne ekersen onu ...",
         "secenekler": ["bulursun", "biçersin", "toplarsın"],
         "dogru": "biçersin"
+    }
+    {
+        "soru": "Ağaç yaş iken ...",
+        "secenekler": ["kurur", "eğilir", "meyve verir"],
+        "dogru": "eğilir"
+    },
+    {
+        "soru": "Balık baştan ...",
+        "secenekler": ["kokar", "yüzür", "avlanır"],
+        "dogru": "kokar"
+    },
+    {
+        "soru": "Tatlı dil yılanı ... çıkarır.",
+        "secenekler": ["yuvasından", "deliğinden", "topraktan"],
+        "dogru": "deliğinden"
+    },
+    {
+        "soru": "Aba altında ... yatar.",
+        "secenekler": ["er", "dev", "kuzu"],
+        "dogru": "er"
+    },
+    {
+        "soru": "Ateş düştüğü yeri ...",
+        "secenekler": ["ısıtır", "yakar", "aydınlatır"],
+        "dogru": "yakar"
+    },
+    {
+        "soru": "Damlaya damlaya ... olur.",
+        "secenekler": ["taş", "göl", "sel"],
+        "dogru": "göl"
+    },
+    {
+        "soru": "Dereyi görmeden ... sıvama.",
+        "secenekler": ["kolları", "paçaları", "etekleri"],
+        "dogru": "paçaları"
+    },
+    {
+        "soru": "Gülü seven ... katlanır.",
+        "secenekler": ["kokusuna", "dikenine", "rengine"],
+        "dogru": "dikenine"
+    },
+    {
+        "soru": "Keskin sirke ... zarar.",
+        "secenekler": ["şişesine", "küpüne", "tadına"],
+        "dogru": "küpüne"
+    },
+    {
+        "soru": "Minareyi çalan ... hazırlar.",
+        "secenekler": ["yerini", "kılıfını", "parasını"],
+        "dogru": "kılıfını"
+    },
+    {
+        "soru": "Rüzgâr eken ... biçer.",
+        "secenekler": ["buğday", "fırtına", "yağmur"],
+        "dogru": "fırtına"
+    },
+    {
+        "soru": "Üzüm üzüme baka baka ...",
+        "secenekler": ["sararır", "kararır", "tatlanır"],
+        "dogru": "kararır"
+    },
+    {
+        "soru": "Yalancının mumu ... kadar yanar.",
+        "secenekler": ["akşama", "yatsıya", "sabaha"],
+        "dogru": "yatsıya"
+    },
+    {
+        "soru": "Demir ... dövülür.",
+        "secenekler": ["ateşte", "tavında", "örste"],
+        "dogru": "tavında"
+    },
+    {
+        "soru": "Paça ıslanmadan ... tutulmaz.",
+        "secenekler": ["balık", "tavşan", "ördek"],
+        "dogru": "balık"
+    },
+    {
+        "soru": "Besle kargayı oysun ...",
+        "secenekler": ["elini", "gözünü", "yemini"],
+        "dogru": "gözünü"
+    },
+    {
+        "soru": "Boş çuval ... durmaz.",
+        "secenekler": ["dik", "yan", "düz"],
+        "dogru": "dik"
+    },
+    {
+        "soru": "Sütten ağzı yanan yoğurdu ... yer.",
+        "secenekler": ["soğuk", "üfleyerek", "kaşıkla"],
+        "dogru": "üfleyerek"
+    },
+    {
+        "soru": "Meyve veren ağacı ...",
+        "secenekler": ["sularlar", "taşlarlar", "budarlar"],
+        "dogru": "taşlarlar"
+    },
+    {
+        "soru": "Denize düşen ... sarılır.",
+        "secenekler": ["yılana", "osuna", "salına"],
+        "dogru": "yılana"
     }
 ]
 
