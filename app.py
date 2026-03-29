@@ -75,11 +75,6 @@ oyun_sorulari = [
         "soru": "Ne ekersen onu ...",
         "secenekler": ["bulursun", "biçersin", "toplarsın"],
         "dogru": "biçersin"
-    }
-    {
-        "soru": "Ağaç yaş iken ...",
-        "secenekler": ["kurur", "eğilir", "meyve verir"],
-        "dogru": "eğilir"
     },
     {
         "soru": "Balık baştan ...",
